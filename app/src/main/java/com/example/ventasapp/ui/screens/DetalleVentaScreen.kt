@@ -1,4 +1,4 @@
-package com.example.ventasapp.ui.ventas
+package com.example.ventasapp.ui.screens
 
 
 
@@ -71,6 +71,8 @@ import com.example.ventasapp.ui.components.ImagenRespaldo
 import com.example.ventasapp.ui.components.PantallaBase
 import com.example.ventasapp.ui.components.TituloSeccion
 import com.example.ventasapp.ui.theme.EstiloCodigo
+import com.example.ventasapp.ui.ventas.DetalleUi
+import com.example.ventasapp.ui.ventas.RevisionUiState
 import com.example.ventasapp.util.Formato
 
 import com.example.ventasapp.viewmodel.DetalleVentaViewModel

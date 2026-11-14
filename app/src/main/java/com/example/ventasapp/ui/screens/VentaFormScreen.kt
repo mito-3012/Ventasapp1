@@ -1,4 +1,4 @@
-package com.example.ventasapp.ui.ventas
+package com.example.ventasapp.ui.screens
 
 import android.Manifest
 import android.content.ActivityNotFoundException

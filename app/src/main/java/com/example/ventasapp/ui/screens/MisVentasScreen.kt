@@ -1,6 +1,5 @@
-package com.example.ventasapp.ui.gestion
+package com.example.ventasapp.ui.screens
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,8 +7,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Inbox
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +22,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.ventasapp.ui.components.BannerMensaje
 import com.example.ventasapp.data.model.EstadoVenta
 import com.example.ventasapp.data.model.Perfil
 import com.example.ventasapp.data.model.VentaEntity
@@ -31,16 +31,14 @@ import com.example.ventasapp.ui.components.PanelFiltros
 import com.example.ventasapp.ui.components.PantallaBase
 import com.example.ventasapp.ui.components.TarjetaVenta
 
-import com.example.ventasapp.viewmodel.GestionViewModel
+import com.example.ventasapp.viewmodel.MisVentasViewModel
 
 
-/**
- * Bandeja del encargado: todas las ventas recibidas, con búsqueda por código y filtros por
- * estado, vendedor y fecha.
- */
+/** Historial de ventas del vendedor, con búsqueda por código y filtro por estado. */
 @Composable
-fun GestionScreen(
-    viewModel: GestionViewModel,
+fun MisVentasScreen(
+    viewModel: MisVentasViewModel,
+    onNuevaVenta: () -> Unit,
     onVerVenta: (Long) -> Unit,
     onCerrarSesion: () -> Unit,
     barraInferior: @Composable () -> Unit
@@ -52,54 +50,43 @@ fun GestionScreen(
 
     // Mensajes del ViewModel (venta eliminada, error de permisos...) en un Snackbar.
     LaunchedEffect(Unit) { viewModel.eventos.collect { snackbar.showSnackbar(it.texto) } }
-    val vendedores by viewModel.vendedores.collectAsState()
-    val indicadores by viewModel.indicadores.collectAsState()
 
     PantallaBase(
-        titulo = "Gestión de ventas",
+        titulo = "Mis ventas",
         onCerrarSesion = onCerrarSesion,
         snackbarHostState = snackbar,
-        barraInferior = barraInferior
+        barraInferior = barraInferior,
+        botonFlotante = {
+            ExtendedFloatingActionButton(
+                onClick = onNuevaVenta,
+                icon = { Icon(Icons.Default.Add, contentDescription = null) },
+                text = { Text("Nueva venta") }
+            )
+        }
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
-            // Aviso de pendientes: aparece y desaparece con animación según haya ventas por revisar.
-            AnimatedVisibility(visible = indicadores.pendientesDeRevision > 0) {
-                BannerMensaje(
-                    texto = "Hay ${indicadores.pendientesDeRevision} venta(s) pendientes de revisión.",
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-                )
-            }
-
-            PanelFiltros(
-                filtros = filtros,
-                onFiltrosChange = viewModel::onFiltrosChange,
-                vendedores = vendedores
-            )
+            PanelFiltros(filtros = filtros, onFiltrosChange = viewModel::onFiltrosChange)
 
             if (ventas.isEmpty()) {
                 EstadoVacio(
-                    icono = Icons.Default.Inbox,
-                    titulo = if (filtros.hayFiltrosActivos) "Sin resultados" else "No hay ventas recibidas",
+                    icono = Icons.Default.Search,
+                    titulo = if (filtros.hayFiltrosActivos) "Sin resultados" else "Aún no hay ventas",
                     mensaje = if (filtros.hayFiltrosActivos) "Prueba cambiando o limpiando los filtros."
-                    else "Cuando un vendedor envíe una venta, aparecerá aquí."
+                    else "Registra tu primera venta con el botón \"Nueva venta\"."
                 )
             } else {
-                Text(
-                    "${ventas.size} venta(s)",
-                    style = MaterialTheme.typography.labelMedium,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
                 LazyColumn(
-                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 16.dp),
+                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 88.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(items = ventas, key = { it.id }) { venta ->
+                        // animateItem(): las tarjetas se reordenan o desaparecen con animación al filtrar.
                         TarjetaVenta(
                             venta = venta,
                             onClick = { onVerVenta(venta.id) },
-                            mostrarVendedor = true,
                             modifier = Modifier.animateItem(),
-                            onEliminar = if (EstadoVenta.desde(venta.estado).puedeEliminar(Perfil.ENCARGADO)) {
+                            // El botón solo aparece si la regla del dominio permite eliminar esta venta.
+                            onEliminar = if (EstadoVenta.desde(venta.estado).puedeEliminar(Perfil.VENDEDOR)) {
                                 { ventaAEliminar = venta }
                             } else null
                         )

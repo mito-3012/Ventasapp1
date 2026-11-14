@@ -1,4 +1,4 @@
-package com.example.ventasapp.ui.login
+package com.example.ventasapp.ui.screens.home
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background

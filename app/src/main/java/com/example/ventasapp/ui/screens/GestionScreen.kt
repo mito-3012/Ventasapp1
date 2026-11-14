@@ -1,5 +1,6 @@
-package com.example.ventasapp.ui.supervision
+package com.example.ventasapp.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,46 +10,65 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Inbox
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.ventasapp.ui.components.BannerMensaje
+import com.example.ventasapp.data.model.EstadoVenta
+import com.example.ventasapp.data.model.Perfil
+import com.example.ventasapp.data.model.VentaEntity
+import com.example.ventasapp.ui.components.DialogoEliminarVenta
 import com.example.ventasapp.ui.components.EstadoVacio
 import com.example.ventasapp.ui.components.PanelFiltros
 import com.example.ventasapp.ui.components.PantallaBase
 import com.example.ventasapp.ui.components.TarjetaVenta
 
-import com.example.ventasapp.viewmodel.SupervisionViewModel
+import com.example.ventasapp.viewmodel.GestionViewModel
 
 
 /**
- * Pantalla del SUPERVISOR: ve todas las ventas del sistema, con filtros, y puede abrir cada una
- * para revisar sus datos, su respaldo y su historial. No tiene botones para modificar nada.
+ * Bandeja del encargado: todas las ventas recibidas, con búsqueda por código y filtros por
+ * estado, vendedor y fecha.
  */
 @Composable
-fun SupervisionScreen(
-    viewModel: SupervisionViewModel,
+fun GestionScreen(
+    viewModel: GestionViewModel,
     onVerVenta: (Long) -> Unit,
     onCerrarSesion: () -> Unit,
     barraInferior: @Composable () -> Unit
 ) {
     val filtros by viewModel.filtros.collectAsState()
     val ventas by viewModel.filtradas.collectAsState()
+    val snackbar = remember { SnackbarHostState() }
+    var ventaAEliminar by remember { mutableStateOf<VentaEntity?>(null) }
+
+    // Mensajes del ViewModel (venta eliminada, error de permisos...) en un Snackbar.
+    LaunchedEffect(Unit) { viewModel.eventos.collect { snackbar.showSnackbar(it.texto) } }
     val vendedores by viewModel.vendedores.collectAsState()
+    val indicadores by viewModel.indicadores.collectAsState()
 
     PantallaBase(
-        titulo = "Supervisión de ventas",
+        titulo = "Gestión de ventas",
         onCerrarSesion = onCerrarSesion,
+        snackbarHostState = snackbar,
         barraInferior = barraInferior
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
-            BannerMensaje(
-                texto = "Perfil de consulta: puedes ver todas las ventas y su historial, sin modificarlas.",
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-            )
+            // Aviso de pendientes: aparece y desaparece con animación según haya ventas por revisar.
+            AnimatedVisibility(visible = indicadores.pendientesDeRevision > 0) {
+                BannerMensaje(
+                    texto = "Hay ${indicadores.pendientesDeRevision} venta(s) pendientes de revisión.",
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                )
+            }
 
             PanelFiltros(
                 filtros = filtros,
@@ -59,9 +79,9 @@ fun SupervisionScreen(
             if (ventas.isEmpty()) {
                 EstadoVacio(
                     icono = Icons.Default.Inbox,
-                    titulo = if (filtros.hayFiltrosActivos) "Sin resultados" else "No hay ventas registradas",
+                    titulo = if (filtros.hayFiltrosActivos) "Sin resultados" else "No hay ventas recibidas",
                     mensaje = if (filtros.hayFiltrosActivos) "Prueba cambiando o limpiando los filtros."
-                    else "Cuando los vendedores registren ventas, aparecerán aquí."
+                    else "Cuando un vendedor envíe una venta, aparecerá aquí."
                 )
             } else {
                 Text(
@@ -78,11 +98,26 @@ fun SupervisionScreen(
                             venta = venta,
                             onClick = { onVerVenta(venta.id) },
                             mostrarVendedor = true,
-                            modifier = Modifier.animateItem()
+                            modifier = Modifier.animateItem(),
+                            onEliminar = if (EstadoVenta.desde(venta.estado).puedeEliminar(Perfil.ENCARGADO)) {
+                                { ventaAEliminar = venta }
+                            } else null
                         )
                     }
                 }
             }
         }
+    }
+
+    // Confirmación antes de eliminar (borra la venta, su historial y su foto).
+    ventaAEliminar?.let { venta ->
+        DialogoEliminarVenta(
+            venta = venta,
+            onConfirmar = {
+                viewModel.eliminarVenta(venta.id)
+                ventaAEliminar = null
+            },
+            onCancelar = { ventaAEliminar = null }
+        )
     }
 }

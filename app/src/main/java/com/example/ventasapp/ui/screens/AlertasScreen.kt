@@ -1,4 +1,4 @@
-package com.example.ventasapp.ui.alertas
+package com.example.ventasapp.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -1,4 +1,4 @@
-package com.example.ventasapp.ui.gestion
+package com.example.ventasapp.ui.screens
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween

@@ -1,4 +1,4 @@
-package com.example.ventasapp.ui.api
+package com.example.ventasapp.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -39,6 +39,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.ventasapp.data.model.Post
+import com.example.ventasapp.ui.api.ModoFormularioPost
+import com.example.ventasapp.ui.api.PostFormUiState
 import com.example.ventasapp.ui.components.PantallaBase
 
 import com.example.ventasapp.viewmodel.PostViewModel

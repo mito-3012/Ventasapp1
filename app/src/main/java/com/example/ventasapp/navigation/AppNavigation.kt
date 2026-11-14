@@ -28,21 +28,21 @@ import com.example.ventasapp.data.model.Perfil
 import com.example.ventasapp.data.model.UsuarioEntity
 
 // Screens
-import com.example.ventasapp.ui.admin.ConfiguracionScreen
-import com.example.ventasapp.ui.admin.UsuariosScreen
-import com.example.ventasapp.ui.alertas.AlertasScreen
-import com.example.ventasapp.ui.api.PostScreen
+import com.example.ventasapp.ui.screens.ConfiguracionScreen
+import com.example.ventasapp.ui.screens.UsuariosScreen
+import com.example.ventasapp.ui.screens.AlertasScreen
+import com.example.ventasapp.ui.screens.PostScreen
 import com.example.ventasapp.ui.components.BarraInferior
 import com.example.ventasapp.ui.components.EstadoVacio
-import com.example.ventasapp.ui.gestion.GestionScreen
-import com.example.ventasapp.ui.gestion.IndicadoresScreen
-import com.example.ventasapp.ui.home.InicioVendedorScreen
-import com.example.ventasapp.ui.login.LoginScreen
-import com.example.ventasapp.ui.login.RegistroUsuarioScreen
-import com.example.ventasapp.ui.supervision.SupervisionScreen
-import com.example.ventasapp.ui.ventas.DetalleVentaScreen
-import com.example.ventasapp.ui.ventas.MisVentasScreen
-import com.example.ventasapp.ui.ventas.VentaFormScreen
+import com.example.ventasapp.ui.screens.GestionScreen
+import com.example.ventasapp.ui.screens.IndicadoresScreen
+import com.example.ventasapp.ui.screens.home.InicioVendedorScreen
+import com.example.ventasapp.ui.screens.home.LoginScreen
+import com.example.ventasapp.ui.screens.RegistroUsuarioScreen
+import com.example.ventasapp.ui.screens.home.SupervisionScreen
+import com.example.ventasapp.ui.screens.DetalleVentaScreen
+import com.example.ventasapp.ui.screens.MisVentasScreen
+import com.example.ventasapp.ui.screens.VentaFormScreen
 
 // ViewModels
 import com.example.ventasapp.viewmodel.AlertasViewModel
