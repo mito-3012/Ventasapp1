@@ -90,7 +90,7 @@ import com.example.ventasapp.viewmodel.VentaFormViewModel
  *  2. GALERÍA: selector de fotos del sistema (Photo Picker), que no necesita permisos.
  *  3. VIBRACIÓN: respuesta háptica cuando una validación falla.
  *
- * Importante: esta pantalla NO valida. Solo muestra los errores que deja el ViewModel.
+ * Importante: esta pantalla NO válida. Solo muestra los errores que deja el ViewModel.
  */
 @Composable
 fun VentaFormScreen(
@@ -135,14 +135,14 @@ fun VentaFormScreen(
         if (concedido) abrirCamara() else viewModel.avisarPermisoCamaraDenegado()
     }
     // Antes de pedir un permiso se muestra un diálogo PROPIO en español que explica para qué se usa.
-    // "camara" o "galeria" = diálogo abierto; null = ninguno.
+    // "Camara" o "Galería" = diálogo abierto; null = ninguno.
     var permisoPendiente by rememberSaveable { mutableStateOf<String?>(null) }
 
     fun tienePermiso(permiso: String) =
         ContextCompat.checkSelfPermission(contexto, permiso) == PackageManager.PERMISSION_GRANTED
 
     val alPulsarCamara: () -> Unit = {
-        if (tienePermiso(Manifest.permission.CAMERA)) abrirCamara() else permisoPendiente = "camara"
+        if (tienePermiso(Manifest.permission.CAMERA)) abrirCamara() else permisoPendiente = "Camara"
     }
 
     // ---- Recurso nativo: GALERÍA (galería propia de la app, con todos sus textos en español) ----
@@ -157,7 +157,7 @@ fun VentaFormScreen(
         if (concedido) mostrarGaleria = true else viewModel.avisarPermisoGaleriaDenegado()
     }
     val alPulsarGaleria: () -> Unit = {
-        if (tienePermiso(permisoGaleria)) mostrarGaleria = true else permisoPendiente = "galeria"
+        if (tienePermiso(permisoGaleria)) mostrarGaleria = true else permisoPendiente = "Galería"
     }
 
     PantallaBase(
@@ -305,7 +305,7 @@ fun VentaFormScreen(
                 // ---------------- Respaldo fotográfico ----------------
                 TituloSeccion("Respaldo fotográfico", Icons.Default.Image)
                 BannerMensaje(
-                    texto = "Usa solo comprobantes FICTICIOS. No fotografíes documentos reales ni personas. " +
+                    texto = "Usa solo comprobantes Ficticios. No fotografíes documentos reales ni personas. " +
                         "Formatos JPG, PNG o WEBP, máximo 2 MB.",
                     modifier = Modifier.padding(vertical = 4.dp)
                 )
@@ -398,7 +398,7 @@ fun VentaFormScreen(
 
     // ---- Explicación (en español) previa al permiso del sistema ----
     permisoPendiente?.let { cual ->
-        val esCamara = cual == "camara"
+        val esCamara = cual == "Camara"
         AlertDialog(
             onDismissRequest = { permisoPendiente = null },
             title = { Text(if (esCamara) "Permiso de cámara" else "Permiso para ver tus fotos") },
