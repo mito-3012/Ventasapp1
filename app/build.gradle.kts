@@ -49,6 +49,39 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+
+
+///para pruebas unoitarias testing
+
+    // Kotest: pruebas unitarias para Kotlin
+    testImplementation("io.kotest:kotest-runner-junit5:5.8.0")
+    testImplementation("io.kotest:kotest-assertions-core:5.8.0")
+
+// JUnit 5
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+// MockK: simulación de dependencias
+    testImplementation("io.mockk:mockk:1.13.10")
+
+// Pruebas de corrutinas
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+
+// Pruebas de interfaz Compose
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+
+
+    //Esto configura Gradle para ejecutar las pruebas unitarias mediante JUnit 5.
+
+    tasks.withType<Test>().configureEach {
+        useJUnitPlatform()
+    }
+
+
+
+
     // ---- Integración con API REST ----
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.converter.gson)
