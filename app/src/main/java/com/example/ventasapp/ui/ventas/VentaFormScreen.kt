@@ -30,10 +30,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Image
-<<<<<<< HEAD
-=======
-import androidx.compose.material.icons.filled.Info
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Pets
 import androidx.compose.material.icons.filled.Phone
@@ -81,10 +78,9 @@ import com.example.ventasapp.ui.components.SelectorGaleria
 import com.example.ventasapp.ui.components.TituloSeccion
 import com.example.ventasapp.util.Formato
 import com.example.ventasapp.util.Validadores
-<<<<<<< HEAD
+
 import com.example.ventasapp.viewmodel.VentaFormViewModel
-=======
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
 
 /**
  * Formulario para registrar, editar o corregir una venta.

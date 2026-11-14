@@ -39,10 +39,9 @@ import com.example.ventasapp.ui.components.BotonCarga
 import com.example.ventasapp.ui.components.CampoClave
 import com.example.ventasapp.ui.components.CampoFormulario
 import com.example.ventasapp.ui.components.PantallaBase
-<<<<<<< HEAD
+
 import com.example.ventasapp.viewmodel.RegistroUsuarioViewModel
-=======
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
 
 /**
  * Formulario "Crear cuenta de vendedor". Es la evolución de RegistroScreen de la guía 11:

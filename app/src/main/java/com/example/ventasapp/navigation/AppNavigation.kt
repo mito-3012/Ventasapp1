@@ -22,63 +22,41 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+
 import com.example.ventasapp.data.model.EstadoVenta
 import com.example.ventasapp.data.model.Perfil
 import com.example.ventasapp.data.model.UsuarioEntity
+
+// Screens
 import com.example.ventasapp.ui.admin.ConfiguracionScreen
-<<<<<<< HEAD
-import com.example.ventasapp.viewmodel.ConfiguracionViewModel
 import com.example.ventasapp.ui.admin.UsuariosScreen
-import com.example.ventasapp.viewmodel.UsuariosViewModel
-import com.example.ventasapp.ui.api.PostScreen
-import com.example.ventasapp.viewmodel.PostViewModel
 import com.example.ventasapp.ui.alertas.AlertasScreen
+import com.example.ventasapp.ui.api.PostScreen
+import com.example.ventasapp.ui.components.BarraInferior
+import com.example.ventasapp.ui.components.EstadoVacio
+import com.example.ventasapp.ui.gestion.GestionScreen
+import com.example.ventasapp.ui.gestion.IndicadoresScreen
+import com.example.ventasapp.ui.home.InicioVendedorScreen
+import com.example.ventasapp.ui.login.LoginScreen
+import com.example.ventasapp.ui.login.RegistroUsuarioScreen
+import com.example.ventasapp.ui.supervision.SupervisionScreen
+import com.example.ventasapp.ui.ventas.DetalleVentaScreen
+import com.example.ventasapp.ui.ventas.MisVentasScreen
+import com.example.ventasapp.ui.ventas.VentaFormScreen
+
+// ViewModels
 import com.example.ventasapp.viewmodel.AlertasViewModel
-import com.example.ventasapp.ui.components.BarraInferior
-import com.example.ventasapp.ui.components.EstadoVacio
-import com.example.ventasapp.ui.gestion.GestionScreen
-import com.example.ventasapp.viewmodel.GestionViewModel
-import com.example.ventasapp.ui.gestion.IndicadoresScreen
-import com.example.ventasapp.ui.home.InicioVendedorScreen
-import com.example.ventasapp.ui.login.LoginScreen
-import com.example.ventasapp.viewmodel.LoginViewModel
-import com.example.ventasapp.ui.login.RegistroUsuarioScreen
-import com.example.ventasapp.viewmodel.RegistroUsuarioViewModel
-import com.example.ventasapp.ui.supervision.SupervisionScreen
-import com.example.ventasapp.viewmodel.SupervisionViewModel
-import com.example.ventasapp.ui.ventas.DetalleVentaScreen
+import com.example.ventasapp.viewmodel.ConfiguracionViewModel
 import com.example.ventasapp.viewmodel.DetalleVentaViewModel
-import com.example.ventasapp.ui.ventas.MisVentasScreen
+import com.example.ventasapp.viewmodel.GestionViewModel
+import com.example.ventasapp.viewmodel.LoginViewModel
 import com.example.ventasapp.viewmodel.MisVentasViewModel
-import com.example.ventasapp.ui.ventas.VentaFormScreen
+import com.example.ventasapp.viewmodel.PostViewModel
+import com.example.ventasapp.viewmodel.RegistroUsuarioViewModel
+import com.example.ventasapp.viewmodel.SupervisionViewModel
+import com.example.ventasapp.viewmodel.UsuariosViewModel
 import com.example.ventasapp.viewmodel.VentaFormViewModel
-=======
-import com.example.ventasapp.ui.admin.ConfiguracionViewModel
-import com.example.ventasapp.ui.admin.UsuariosScreen
-import com.example.ventasapp.ui.admin.UsuariosViewModel
-import com.example.ventasapp.ui.api.PostScreen
-import com.example.ventasapp.ui.api.PostViewModel
-import com.example.ventasapp.ui.alertas.AlertasScreen
-import com.example.ventasapp.ui.alertas.AlertasViewModel
-import com.example.ventasapp.ui.components.BarraInferior
-import com.example.ventasapp.ui.components.EstadoVacio
-import com.example.ventasapp.ui.gestion.GestionScreen
-import com.example.ventasapp.ui.gestion.GestionViewModel
-import com.example.ventasapp.ui.gestion.IndicadoresScreen
-import com.example.ventasapp.ui.home.InicioVendedorScreen
-import com.example.ventasapp.ui.login.LoginScreen
-import com.example.ventasapp.ui.login.LoginViewModel
-import com.example.ventasapp.ui.login.RegistroUsuarioScreen
-import com.example.ventasapp.ui.login.RegistroUsuarioViewModel
-import com.example.ventasapp.ui.supervision.SupervisionScreen
-import com.example.ventasapp.ui.supervision.SupervisionViewModel
-import com.example.ventasapp.ui.ventas.DetalleVentaScreen
-import com.example.ventasapp.ui.ventas.DetalleVentaViewModel
-import com.example.ventasapp.ui.ventas.MisVentasScreen
-import com.example.ventasapp.ui.ventas.MisVentasViewModel
-import com.example.ventasapp.ui.ventas.VentaFormScreen
-import com.example.ventasapp.ui.ventas.VentaFormViewModel
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
 
 private const val DURACION_MS = 300
 

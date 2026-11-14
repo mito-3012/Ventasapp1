@@ -41,10 +41,9 @@ import com.example.ventasapp.ui.components.TarjetaNumero
 import com.example.ventasapp.ui.components.TituloSeccion
 import com.example.ventasapp.ui.theme.colores
 import com.example.ventasapp.util.Formato
-<<<<<<< HEAD
+
 import com.example.ventasapp.viewmodel.GestionViewModel
-=======
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
 
 /** Indicadores generales del proceso y datos para el cálculo (ficticio) de comisiones. */
 @Composable

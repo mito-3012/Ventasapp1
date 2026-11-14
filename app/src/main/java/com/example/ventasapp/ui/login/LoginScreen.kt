@@ -46,10 +46,9 @@ import com.example.ventasapp.ui.components.BannerMensaje
 import com.example.ventasapp.ui.components.BotonCarga
 import com.example.ventasapp.ui.components.CampoClave
 import com.example.ventasapp.ui.components.CampoFormulario
-<<<<<<< HEAD
+
 import com.example.ventasapp.viewmodel.LoginViewModel
-=======
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
 
 /**
  * Pantalla de inicio de sesión.

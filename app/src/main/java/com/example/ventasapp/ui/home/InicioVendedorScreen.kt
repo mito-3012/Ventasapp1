@@ -34,11 +34,11 @@ import com.example.ventasapp.ui.components.PantallaBase
 import com.example.ventasapp.ui.components.TarjetaNumero
 import com.example.ventasapp.ui.components.TarjetaVenta
 import com.example.ventasapp.ui.theme.colores
-<<<<<<< HEAD
+
 import com.example.ventasapp.viewmodel.MisVentasViewModel
-=======
-import com.example.ventasapp.ui.ventas.MisVentasViewModel
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
+
+
 
 /**
  * Pantalla de inicio del vendedor: saludo, resumen ficticio de sus operaciones, aviso de ventas

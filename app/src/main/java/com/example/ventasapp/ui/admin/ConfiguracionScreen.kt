@@ -37,10 +37,10 @@ import com.example.ventasapp.data.model.TipoConvenio
 import com.example.ventasapp.ui.components.CampoFormulario
 import com.example.ventasapp.ui.components.PantallaBase
 import com.example.ventasapp.ui.components.TituloSeccion
-<<<<<<< HEAD
+
 import com.example.ventasapp.viewmodel.ConfiguracionViewModel
-=======
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
+
 
 /** Configuración del administrador: porcentajes de comisión ficticios y limpieza de datos de prueba. */
 @Composable

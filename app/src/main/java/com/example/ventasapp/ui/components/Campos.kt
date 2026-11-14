@@ -4,11 +4,9 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-<<<<<<< HEAD
 
-=======
-import androidx.compose.foundation.layout.matchParentSize
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
+
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons

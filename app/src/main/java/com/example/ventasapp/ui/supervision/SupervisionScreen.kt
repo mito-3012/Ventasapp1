@@ -20,10 +20,9 @@ import com.example.ventasapp.ui.components.EstadoVacio
 import com.example.ventasapp.ui.components.PanelFiltros
 import com.example.ventasapp.ui.components.PantallaBase
 import com.example.ventasapp.ui.components.TarjetaVenta
-<<<<<<< HEAD
+
 import com.example.ventasapp.viewmodel.SupervisionViewModel
-=======
->>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
+
 
 /**
  * Pantalla del SUPERVISOR: ve todas las ventas del sistema, con filtros, y puede abrir cada una
