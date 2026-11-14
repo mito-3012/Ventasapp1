@@ -51,7 +51,10 @@ import com.example.ventasapp.ui.components.CampoClave
 import com.example.ventasapp.ui.components.CampoFormulario
 import com.example.ventasapp.ui.components.CampoSeleccion
 import com.example.ventasapp.ui.components.PantallaBase
+<<<<<<< HEAD
 import com.example.ventasapp.viewmodel.UsuariosViewModel
+=======
+>>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
 
 /**
  * Administración de usuarios: lista de cuentas, activar o desactivar, asignar perfil y crear

@@ -40,7 +40,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.ventasapp.data.model.Post
 import com.example.ventasapp.ui.components.PantallaBase
+<<<<<<< HEAD
 import com.example.ventasapp.viewmodel.PostViewModel
+=======
+>>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
 
 // Pantalla de administración que permite consultar y ejecutar operaciones CRUD sobre la API.
 @Composable

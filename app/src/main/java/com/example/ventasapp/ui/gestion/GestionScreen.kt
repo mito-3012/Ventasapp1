@@ -30,7 +30,10 @@ import com.example.ventasapp.ui.components.EstadoVacio
 import com.example.ventasapp.ui.components.PanelFiltros
 import com.example.ventasapp.ui.components.PantallaBase
 import com.example.ventasapp.ui.components.TarjetaVenta
+<<<<<<< HEAD
 import com.example.ventasapp.viewmodel.GestionViewModel
+=======
+>>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
 
 /**
  * Bandeja del encargado: todas las ventas recibidas, con búsqueda por código y filtros por

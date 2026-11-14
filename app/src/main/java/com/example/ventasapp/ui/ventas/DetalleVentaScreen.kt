@@ -1,5 +1,9 @@
 package com.example.ventasapp.ui.ventas
 
+<<<<<<< HEAD
+=======
+import androidx.compose.animation.AnimatedVisibility
+>>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -69,7 +73,10 @@ import com.example.ventasapp.ui.components.PantallaBase
 import com.example.ventasapp.ui.components.TituloSeccion
 import com.example.ventasapp.ui.theme.EstiloCodigo
 import com.example.ventasapp.util.Formato
+<<<<<<< HEAD
 import com.example.ventasapp.viewmodel.DetalleVentaViewModel
+=======
+>>>>>>> c79d8b70ac30be1c0d13cf35aa9c350fe5d77cf6
 
 /**
  * Detalle de una venta. Una sola pantalla sirve a los dos perfiles; lo que cambia es el panel
