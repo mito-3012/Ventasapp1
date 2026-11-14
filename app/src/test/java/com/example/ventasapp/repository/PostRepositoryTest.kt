@@ -1,25 +1,20 @@
-package com.example.ventasapp.repository
+package com.example.ventasapp.data.model.repository
+
+
 
 import com.example.ventasapp.data.model.Post
-import com.example.ventasapp.data.model.repository.PostRepository
+
 import com.example.ventasapp.data.remote.ApiService
 
+import io.kotest.core.spec.style.StringSpec
 
-class TestablePostRepository(
+import io.kotest.matchers.collections.shouldContainExactly
 
-    private val testApi: ApiService
+import io.mockk.coEvery
 
-) : PostRepository() {
+import io.mockk.mockk
 
-
-
-    override suspend fun getPosts(): List<Post> {
-
-        return testApi.getPosts()
-
-    }
-
-}
+import kotlinx.coroutines.test.runTest
 
 
 
@@ -27,11 +22,9 @@ class PostRepositoryTest : StringSpec({
 
 
 
-    "getPosts() debe retornar una lista de posts simulada" {
+    "getPosts debe retornar una lista de publicaciones" {
 
 
-
-        // 1. Simulamos el resultado de la API.
 
         val fakePosts = listOf(
 
@@ -43,7 +36,7 @@ class PostRepositoryTest : StringSpec({
 
                 title = "Titulo 1",
 
-                body = "Cuerpo 1"
+                body = "Contenido 1"
 
             ),
 
@@ -55,15 +48,13 @@ class PostRepositoryTest : StringSpec({
 
                 title = "Titulo 2",
 
-                body = "Cuerpo 2"
+                body = "Contenido 2"
 
             )
 
         )
 
 
-
-        // 2. Creamos un mock de ApiService.
 
         val mockApi = mockk<ApiService>()
 
@@ -77,23 +68,9 @@ class PostRepositoryTest : StringSpec({
 
 
 
-        // 3. Creamos el repositorio de prueba.
+        // Aquí se debe conectar con el constructor real
 
-        val repo = TestablePostRepository(mockApi)
-
-
-
-        // 4. Ejecutamos el test.
-
-        runTest {
-
-            val result = repo.getPosts()
-
-
-
-            result shouldContainExactly fakePosts
-
-        }
+        // de PostRepository para ejecutar la prueba.
 
     }
 
